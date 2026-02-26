@@ -118,7 +118,7 @@ export default function MobileLayout() {
     }
 
     return (
-        <div className="min-h-screen" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #0c2444 50%, #0e3060 100%)' }}>
+        <div className="h-screen w-full overflow-y-auto overflow-x-hidden" style={{ background: 'linear-gradient(180deg, #0a1628 0%, #0c2444 50%, #0e3060 100%)', WebkitOverflowScrolling: 'touch' }}>
             {/* Toast */}
             {toast && (
                 <div className={`fixed bottom-4 right-4 left-4 z-50 py-3 px-4 rounded-xl text-sm font-medium text-white flex items-center gap-2 ${toast.type === 'success' ? 'bg-green-700/90' : 'bg-red-700/90'}`}>
