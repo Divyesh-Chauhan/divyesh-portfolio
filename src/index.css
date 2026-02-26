@@ -1,0 +1,346 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+        overflow: hidden;
+        background: #000;
+        color: #fff;
+        user-select: none;
+    }
+
+    input,
+    textarea {
+        user-select: text;
+    }
+}
+
+@layer components {
+
+    /* Glass panel - core Vista aesthetic */
+    .glass {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .glass-dark {
+        background: rgba(10, 20, 40, 0.65);
+        backdrop-filter: blur(20px) saturate(200%);
+        -webkit-backdrop-filter: blur(20px) saturate(200%);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .glass-button {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 100%);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.2s ease;
+    }
+
+    .glass-button:hover {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.15) 100%);
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Vista window chrome */
+    .window-titlebar {
+        background: linear-gradient(180deg,
+                rgba(100, 170, 255, 0.8) 0%,
+                rgba(50, 120, 220, 0.85) 40%,
+                rgba(30, 90, 190, 0.9) 100%);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Taskbar */
+    .taskbar {
+        background: linear-gradient(180deg,
+                rgba(20, 60, 140, 0.92) 0%,
+                rgba(10, 35, 90, 0.98) 100%);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(100, 160, 255, 0.4);
+        box-shadow: 0 -4px 20px rgba(0, 80, 200, 0.3);
+    }
+
+    /* Start button */
+    .start-btn {
+        background: linear-gradient(180deg,
+                rgba(60, 150, 80, 0.9) 0%,
+                rgba(30, 100, 50, 0.95) 100%);
+        border: 2px solid rgba(80, 200, 100, 0.6);
+        box-shadow: 0 0 15px rgba(60, 180, 80, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .start-btn:hover {
+        background: linear-gradient(180deg,
+                rgba(80, 180, 100, 0.95) 0%,
+                rgba(50, 130, 70, 0.98) 100%);
+        box-shadow: 0 0 25px rgba(60, 200, 80, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    /* Desktop icon */
+    .desktop-icon {
+        transition: all 0.15s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        width: 80px;
+        padding: 6px;
+        border-radius: 8px;
+        border: 1px solid transparent;
+    }
+
+    .desktop-icon:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .desktop-icon:active {
+        background: rgba(31, 114, 194, 0.25);
+        border-color: rgba(94, 162, 216, 0.5);
+    }
+
+    .desktop-icon:hover .icon-bg {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .icon-label {
+        text-align: center;
+        font-size: 0.7rem;
+        font-weight: 500;
+        color: #fff;
+        width: 100%;
+        word-break: break-word;
+        line-height: 1.25;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9), 0 0 8px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(100, 160, 255, 0.4);
+        border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(100, 160, 255, 0.7);
+    }
+
+    /* Skill badge */
+    .skill-badge {
+        background: linear-gradient(135deg, rgba(31, 114, 194, 0.35), rgba(94, 162, 216, 0.2));
+        border: 1px solid rgba(94, 162, 216, 0.4);
+        color: #a8d4f5;
+        border-radius: 9999px;
+        padding: 4px 14px;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+    }
+
+    /* Tag chip */
+    .lang-chip {
+        font-size: 0.7rem;
+        padding: 2px 8px;
+        border-radius: 9999px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+    }
+}
+
+/* Wallpaper gradient background */
+.vista-wallpaper {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 50% 100%, rgba(0, 60, 160, 0.6) 0%, transparent 70%),
+        radial-gradient(ellipse 100% 80% at 30% 80%, rgba(0, 100, 200, 0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 70% 90%, rgba(0, 40, 120, 0.5) 0%, transparent 60%),
+        linear-gradient(180deg, #0a1628 0%, #0c2444 30%, #0e3060 60%, #1a4a7a 80%, #2060a0 100%);
+    overflow: hidden;
+}
+
+.vista-wallpaper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 25% 60%, rgba(255, 255, 255, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 75% 70%, rgba(100, 180, 255, 0.06) 0%, transparent 50%);
+}
+
+/* The iconic Vista aurora glow orb */
+.vista-aurora {
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 60%;
+    background: radial-gradient(ellipse at center,
+            rgba(20, 120, 220, 0.25) 0%,
+            rgba(10, 80, 180, 0.15) 40%,
+            transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+}
+
+/* Vista-style glowing energy sphere for wallpaper */
+.vista-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+/* Window animations */
+.window-enter {
+    animation: windowOpen 0.25s ease-out;
+}
+
+@keyframes windowOpen {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Taskbar button */
+.taskbar-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.15s ease;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.taskbar-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.taskbar-btn.active {
+    background: rgba(31, 114, 194, 0.4);
+    border-color: rgba(94, 162, 216, 0.6);
+    box-shadow: inset 0 -2px 0 rgba(94, 162, 216, 0.8);
+}
+
+/* Toggle switch */
+.toggle-switch {
+    appearance: none;
+    width: 40px;
+    height: 22px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 11px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+}
+
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    transition: left 0.2s ease;
+}
+
+.toggle-switch:checked {
+    background: rgba(31, 114, 194, 0.7);
+    border-color: rgba(94, 162, 216, 0.8);
+}
+
+.toggle-switch:checked::after {
+    left: 20px;
+    background: #fff;
+}
+
+/* Form inputs */
+.vista-input {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #e0eeff;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    width: 100%;
+    transition: border-color 0.2s, background 0.2s;
+    outline: none;
+}
+
+.vista-input:focus {
+    border-color: rgba(94, 162, 216, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.vista-input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    z-index: 99999;
+    min-width: 260px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    animation: toastSlide 0.3s ease-out;
+}
+
+.toast-success {
+    background: linear-gradient(135deg, rgba(20, 160, 80, 0.9), rgba(10, 120, 60, 0.95));
+    border: 1px solid rgba(80, 200, 120, 0.5);
+}
+
+.toast-error {
+    background: linear-gradient(135deg, rgba(180, 40, 40, 0.9), rgba(140, 20, 20, 0.95));
+    border: 1px solid rgba(255, 100, 100, 0.5);
+}
+
+@keyframes toastSlide {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
