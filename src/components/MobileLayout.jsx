@@ -175,7 +175,7 @@ export default function MobileLayout() {
             <MobileSection id="projects" title="Projects">
                 <div className="flex flex-col gap-4">
                     {visibleRepos.map(repo => {
-                        const liveUrl = (liveLinks && liveLinks[repo.name]) || null
+                        const liveUrl = liveLinks?.[repo.name]
                         return (
                             <div key={repo.id} className="rounded-xl overflow-hidden flex flex-col" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
                                 <div className="p-4 flex-1">
